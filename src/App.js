@@ -1,7 +1,18 @@
+import {useState} from 'react';
 import logo from './logo.svg';
 import './App.css';
+import Modal from './Modal';
 
 function App() {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const modalOpenHandler = () => {
+    setIsModalOpen(true);
+  }
+
+  const modalCloseHandler = () => {
+    setIsModalOpen(false);
+  }
   return (
     <div className="App">
       <header className="App-header">
@@ -17,6 +28,11 @@ function App() {
         >
           Learn React
         </a>
+        <button onClick={modalOpenHandler}>Click Modal</button>
+        <Modal open={isModalOpen} onClose={modalCloseHandler} isDropClose={true}>
+          <h1>hello modal</h1>
+          <p>lorem ipsum dolor sit amet, consectetur adip</p>
+        </Modal>
       </header>
     </div>
   );
